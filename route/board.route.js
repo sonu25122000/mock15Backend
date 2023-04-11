@@ -6,6 +6,17 @@ const { BoardModel } = require("../model/Board.model");
 const { TaskModel } = require("../model/task.model");
 const { SubtaskModel } = require("../model/subtask.model");
 
+
+boardRouter.get("/get", async(req,res)=>{
+  const {userID}=req.body;
+try{
+  const board=await BoardModel.find({userID});
+  res.send({"msg":"Your board","board":board})
+}catch(err){
+  res.send({"msg":"somthing went wrong","error":err.message})
+}
+})
+
 boardRouter.post("/", async (req, res) => {
   const payload = req.body;
   const { userID } = req.body;
