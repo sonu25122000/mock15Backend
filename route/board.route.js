@@ -9,7 +9,6 @@ const { SubtaskModel } = require("../model/subtask.model");
 boardRouter.post("/", async (req, res) => {
   const payload = req.body;
   const { userID } = req.body;
-//   console.log(userID);
   try {
     const board = new BoardModel({ ...payload, userID });
     board.save();
